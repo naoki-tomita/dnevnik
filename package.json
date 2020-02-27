@@ -8,6 +8,6 @@
   "scripts": {
     "start": "yarn serve & yarn run:server",
     "serve": "npx http-server app/dist -p $PORT --proxy http://localhost:8000",
-    "run:server": "cd server yarn start"
+    "run:server": "cd server && yarn start"
   }
 }
