@@ -8,10 +8,11 @@ mkdir -p $CACHE_DIR
 source $BUILD_DIR/bin/install.sh
 
 install_nodejs
+npm i -g yarn
 
 cd $BUILD_DIR/app
-npm i
-npm run build:production
+yarn
+yarn build:production
 
 cd $BUILD_DIR/server
-npm i
+yarn

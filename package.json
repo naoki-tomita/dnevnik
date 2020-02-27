@@ -1,0 +1,13 @@
+{
+  "name": "dnevnik",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:naoki-tomita/dnevnik.git",
+  "author": "kojiro.ueda <mxcpy608@hotmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "yarn serve & yarn run:server",
+    "serve": "npx http-server app/dist -p $PORT --proxy http://localhost:8000",
+    "run:server": "cd server yarn start"
+  }
+}
