@@ -10,6 +10,7 @@ source $BUILD_DIR/bin/install.sh
 install_nodejs
 
 cd $BUILD_DIR/app
+npm i
 npm run build:production
 
 cd $BUILD_DIR/server
