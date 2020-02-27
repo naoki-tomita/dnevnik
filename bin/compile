@@ -3,5 +3,9 @@ BUILD_DIR=${1:-}
 CACHE_DIR=${2:-}
 ENV_DIR=${3:-}
 
+source ./install.sh
+
+install_nodejs
+
 cd $BUILD_DIR/app
-yarn build:production
+npm run build:production
