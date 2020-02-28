@@ -1,16 +1,24 @@
 import { createStore } from "zheleznaya";
 
-interface Article {
+export interface Article {
   id: string;
   title: string;
   body: string;
 }
 
+export interface Comment {
+  id: string;
+  name?: string;
+  comment: string;
+}
+
 interface Store {
+  route: string;
   user: {
     name: string;
   } | undefined;
   articles: Article[],
+  currentArticle: (Article & { comments: Comment[] }) | undefined;
   editor: {
     title: string;
     body: string;
@@ -22,8 +30,10 @@ interface Store {
 }
 
 export const store = createStore<Store>({
+  route: "",
   user: undefined,
   articles: [],
+  currentArticle: undefined,
   editor: {
     title: "",
     body: "",

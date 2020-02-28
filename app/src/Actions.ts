@@ -37,3 +37,12 @@ export async function login() {
     store.user = { name: "user" };
   }
 }
+
+export async function fetchArticle(id: string) {
+  const result = await fetch(`/v1/articles/${id}`);
+  if (result.ok) {
+    console.log("set start");
+    store.currentArticle = await result.json();
+    console.log(store.currentArticle);
+  }
+}
