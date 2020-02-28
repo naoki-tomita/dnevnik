@@ -6,6 +6,13 @@ const articles: Array<{
   body: string;
 }> = [];
 
+const comments: Array<{
+  id: string;
+  articleId: string;
+  name?: string;
+  comment: string;
+}> = [];
+
 @root("/v1/articles")
 class ArticleResources {
   @get
@@ -29,9 +36,15 @@ class ArticleResources {
   getOne({ id }: { id: string }) {
     const article = articles.find(it => it.id === id);
     if (article) {
-      return article;
+      return { ...article, comments: comments.filter(it => it.articleId === id) };
     }
     throw new NotFoundException(`Id: ${id} articles are not found.`);
+  }
+
+  @post
+  @path("/:articleId/comments")
+  postComment({ articleId }: { articleId: string }, _: any, body: { name?: string, comment: string }) {
+    comments.push({ id: this.generateId(), articleId, ...body });
   }
 
   generateId() {
