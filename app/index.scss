@@ -1,3 +1,13 @@
+body {
+  color: #5d627b;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
 .container {
   max-width: 920px;
   margin: auto;
@@ -52,25 +62,43 @@
   }
 }
 
-ul.articles {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-
-  .article-item {
-    padding: 0.5em 1em;
-    margin: 2em 0;
-    color: #5d627b;
-    background: white;
-    border-top: solid 5px #5d627b;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
-    p {
-      margin: 0;
-      padding: 0;
-    }
+.article-item {
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  background: white;
+  border-top: solid 5px #5d627b;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+  p {
+    margin: 0;
+    padding: 0;
   }
 }
 
+.comment-list {
+  position: relative;
+  margin: 2em 0;
+  padding: 1em 1em;
+  border: solid 3px #5d627b;
+  border-radius: 8px;
+
+  .comment-title {
+    position: absolute;
+    display: inline-block;
+    top: -13px;
+    left: 10px;
+    padding: 0 9px;
+    line-height: 1;
+    font-size: 19px;
+    background: #FFF;
+    color: #5d627b;
+    font-weight: bold;
+  }
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}
 
 .comment {
   position: relative;
@@ -78,6 +106,7 @@ ul.articles {
   background-color: #107b5e;
   color: #ffffff;
   border-radius: 10px;
+  margin-top: 16px;
 }
 
 .comment::before {

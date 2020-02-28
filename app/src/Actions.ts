@@ -41,8 +41,19 @@ export async function login() {
 export async function fetchArticle(id: string) {
   const result = await fetch(`/v1/articles/${id}`);
   if (result.ok) {
-    console.log("set start");
     store.currentArticle = await result.json();
-    console.log(store.currentArticle);
+  }
+}
+
+export async function sendComment(id: string, name: string | undefined, comment: string) {
+  const result = await fetch(`/v1/articles/${id}/comments`, {
+    method: "post",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ name, comment })
+  });
+  if (result.ok) {
+    store.commentInput.name = "";
+    store.commentInput.comment = "";
+    fetchArticle(id);
   }
 }

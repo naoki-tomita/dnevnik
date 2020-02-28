@@ -19,6 +19,10 @@ interface Store {
   } | undefined;
   articles: Article[],
   currentArticle: (Article & { comments: Comment[] }) | undefined;
+  commentInput: {
+    name: string;
+    comment: string;
+  },
   editor: {
     title: string;
     body: string;
@@ -34,6 +38,10 @@ export const store = createStore<Store>({
   user: undefined,
   articles: [],
   currentArticle: undefined,
+  commentInput: {
+    name: "",
+    comment: "",
+  },
   editor: {
     title: "",
     body: "",

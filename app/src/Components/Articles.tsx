@@ -1,6 +1,7 @@
 import { h, Component } from "zheleznaya";
 import { store, Article as ArticleEntity, Comment as CommentEntity } from "../Store"
 import { Link } from "../Router";
+import { sendComment } from "../Actions";
 
 export const Articles: Component = ({ articles }: { articles: ArticleEntity[] }) => {
   return (
@@ -36,15 +37,46 @@ export const ArticlePage: Component = () => {
 
 export const Comments = ({ items }: { items: CommentEntity[] }) => {
   return (
-    <ul>
-      {items.map(it => <li><Comment item={it} /></li>)}
-    </ul>
+    <div class="comment-list">
+      <span class="comment-title">コメント</span>
+      <ul>
+        {items.map(it => <li><Comment item={it} /></li>)}
+      </ul>
+      <CommentInput />
+    </div>
   );
 }
 
-const Comment = ({ item }: { item: CommentEntity }) => {
+const CommentInput: Component = () => {
   return (
-    <div>
+    <div class="editor">
+      <div>
+        <input
+          value={store.commentInput.name}
+          oninput={(e) => store.commentInput.name = (e.target as HTMLInputElement).value}
+        />
+      </div>
+      <div>
+        <textarea
+          value={store.commentInput.comment}
+          oninput={(e) => store.commentInput.comment = (e.target as HTMLInputElement).value}
+        />
+      </div>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <button
+          onclick={() => sendComment(store.route.replace("/", ""), store.commentInput.name, store.commentInput.comment)}
+          disabled={!store.commentInput.comment}
+        >
+          Send
+        </button>
+      </div>
+    </div>
+  );
+}
+
+const Comment: Component = ({ item }: { item: CommentEntity }) => {
+  return (
+    <div style={{ marginBottom: "8px" }}>
       {`${item.name || "名無し"}さん`}
       <div class="comment">{item.comment}</div>
     </div>
