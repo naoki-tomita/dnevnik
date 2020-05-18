@@ -1,4 +1,4 @@
-import { path, root, post, Response, handle, get, auth } from "summer-framework";
+import { path, root, post, Response, Request, handle, get } from "summer-framework";
 
 const articles: Array<{
   id: string;
@@ -23,8 +23,8 @@ class ArticleResources {
 
   @post
   @path("")
-  post(_param: any, _query: any, body: { title: string, body: string }, { authResult }: { authResult: { loggedIn: boolean } }) {
-    if (authResult.loggedIn) {
+  post({ body, authResult: { loggedIn } }: Request<{}, {}, { title: string, body: string }, { loggedIn: boolean }>) {
+    if (loggedIn) {
       return articles.push({ ...body, id: this.generateId() }), {};
     } else {
       throw new NotLoggedInException("Failed to post new article, because not logged in.");
@@ -33,7 +33,7 @@ class ArticleResources {
 
   @get
   @path("/:id")
-  getOne({ id }: { id: string }) {
+  getOne({ params: { id } }: Request<{ id: string }>) {
     const article = articles.find(it => it.id === id);
     if (article) {
       return { ...article, comments: comments.filter(it => it.articleId === id) };
@@ -43,7 +43,7 @@ class ArticleResources {
 
   @post
   @path("/:articleId/comments")
-  postComment({ articleId }: { articleId: string }, _: any, body: { name?: string, comment: string }) {
+  postComment({ params: { articleId }, body }: Request<{ articleId: string }, {}, { name?: string, comment: string }>) {
     comments.push({ id: this.generateId(), articleId, ...body });
   }
 

@@ -1,10 +1,10 @@
-import { path, root, post, Response, handle, auth, get } from "summer-framework";
+import { path, root, post, Response, Request, handle, auth, get } from "summer-framework";
 
 @root("/v1/users")
 class UserResources {
   @path("/login")
   @post
-  login(_params: {}, _query: {}, body: { name: string, password: string }) {
+  login({ body }: Request<{}, {}, { name: string, password: string }>) {
     if (body.name === "user" && body.password === "password") {
       return new Response().status(200).headers({ "set-cookie": "logged-in=user; path=/;" }).body({});
     }
@@ -13,8 +13,8 @@ class UserResources {
 
   @path("/me")
   @get
-  getMe(_a: any, _b: any, _c: any, { authResult: { name } }: { authResult: { loggedIn: boolean, name: string } }) {
-    return { name };
+  getMe({ authResult: { name } }: Request<{}, {}, {}, { loggedIn: boolean, name: string }>) {
+    return new Response().status(200).body({ name });
   }
 
   @path("/logout")
@@ -35,7 +35,7 @@ class FailedToLoginException implements Error {
   stack?: string | undefined;
   constructor(message: string) {
     this.message = message;
-    Error.captureStackTrace(this);
+    Error.captureStackTrace(this, FailedToLoginException);
   }
 }
 
