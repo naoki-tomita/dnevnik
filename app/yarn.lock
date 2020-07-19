@@ -3078,9 +3078,9 @@ lodash.uniq@^4.5.0:
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
 lodash@^4.17.13, lodash@^4.17.15, lodash@^4.17.4:
-  version "4.17.15"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
-  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
+  version "4.17.19"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.19.tgz#e48ddedbe30b3321783c5b4301fbd353bc1e4a4b"
+  integrity sha512-JNvd8XER9GQX0v2qJgsaN/mzFCNA5BRe/j8JN9d+tWyGLSodKQHKFicdwNYzWwI3wjRnaKPsGj1XkBjx/F96DQ==
 
 log-symbols@^2.2.0:
   version "2.2.0"
@@ -4876,11 +4876,6 @@ stylehacks@^4.0.0:
     browserslist "^4.0.0"
     postcss "^7.0.0"
     postcss-selector-parser "^3.0.0"
-
-summer-framework@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/summer-framework/-/summer-framework-0.2.1.tgz#23cfbd21002c07e262fa4d343044e3489f4e2b13"
-  integrity sha512-L2qH7sVQ08lZRB9VnOHpV1jb7sRmydpCRO0flRJiuWjLtH1i7wg4GmIpSCflP1LICIEFgzhpP0lpRrzTjvlHDQ==
 
 supports-color@^2.0.0:
   version "2.0.0"
