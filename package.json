@@ -6,8 +6,9 @@
   "author": "kojiro.ueda <mxcpy608@hotmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "yarn serve & yarn run:server",
+    "start": "yarn serve & yarn run:server & yarn poll",
     "serve": "npx http-server app/dist -p $PORT --proxy http://localhost:8000",
-    "run:server": "cd server && yarn start"
+    "run:server": "cd server && yarn start",
+    "poll": "node Wake.js"
   }
 }
