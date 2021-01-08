@@ -1,4 +1,4 @@
-const http = require("http");
+const http = require("https");
 function poll() {
   http.get(
     "https://kojiro-ueda-dnevnik.herokuapp.com/",
