@@ -4,7 +4,7 @@ function poll() {
     "https://kojiro-ueda-dnevnik.herokuapp.com/",
     (res) => console.log("poll", res.statusCode)
   );
-  setTimeout(poll, 20 * 60 * 1000);
+  setTimeout(poll, 5 * 60 * 1000);
 }
 
 poll();
